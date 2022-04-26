@@ -18,7 +18,7 @@ class Evaluation:
         with graph.as_default():
             self.session = tf.compat.v1.Session()
             with self.session.as_default():
-                # 加载 .meta 图与变量
+                # Load .meta graphs and variables
                 saver = tf.compat.v1.train.import_meta_graph("{}.meta".format(checkpoint_file))
                 saver.restore(self.session, checkpoint_file)
                 self.input_inflow = graph.get_operation_by_name("input-layer/input-inflow").outputs[0]

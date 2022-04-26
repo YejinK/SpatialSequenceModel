@@ -70,9 +70,9 @@ class Model:
     def fc_layer(self, inputs, activation=None, name=None):
         return tf.keras.layers.Dense(1024, activation=activation, name=name)(inputs)
 
-    ############################################################################################
-    #                                  基于位置关系影响的特征提取层
-    ############################################################################################
+    ##########################################################################################################
+    #                   Feature extraction layer based on the influence of positional relationship
+    ##########################################################################################################
     def flow_extract_layer(self, inputs, name):
         with tf.compat.v1.name_scope('flow-extract-layer'):
             left_out = self.flow_extract_left_layer(inputs, name=name)

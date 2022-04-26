@@ -60,9 +60,9 @@ class Model:
     def outflow_attention_layer(self, inputs):
         return self.flow_extract(inputs, name='outflow')
 
-    ############################################################################################
-    #                                  基于位置关系影响的特征提取层
-    ############################################################################################
+    ##########################################################################################################
+    #                   Feature extraction layer based on the influence of positional relationship
+    ##########################################################################################################
     def flow_extract_layer(self, inputs, name):
         left_out = self.flow_extract_left_layer(inputs, name=name)
         left_top_out = self.flow_extract_left_top_layer(inputs, name=name)

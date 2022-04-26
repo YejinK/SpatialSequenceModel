@@ -78,18 +78,18 @@ def train(batch_size, x, t, r, lr, lr_step, lr_rate, steps):
 
 
 def parameter_settings():
-    # 基础参数
+    # Basic parameters
     batch_size = 8
     x = 32
     t = 4
     r = 1
 
-    # 学习率调节
+    # Learning rate adjustment
     lr = 0.0018
     lr_step = 50
     lr_rate = 0.99
 
-    # 循环参数
+    # Loop parameter
     steps = 10000
 
     return batch_size, x, t, r, lr, lr_step, lr_rate, steps
