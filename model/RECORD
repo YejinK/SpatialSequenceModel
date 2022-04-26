@@ -1,0 +1,5 @@
+No.1556179022 Model, Training on 2019-04-25 15:57:02
+batch=8,x=32,t=4,steps=10000
+lr=0.002000,decay_steps=50,decay_rate=0.990000
+RMSE=0.071845,RMSE(real)=24.067919
+
