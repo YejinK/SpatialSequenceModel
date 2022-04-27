@@ -3,3 +3,18 @@ batch=8,x=32,t=4,steps=10000
 lr=0.002000,decay_steps=50,decay_rate=0.990000
 RMSE=0.071845,RMSE(real)=24.067919
 
+No.1650986646 Model, Training on 2022-04-26 11:24:06
+batch=8,x=32,t=4,steps=10000
+lr=0.001800,decay_steps=50,decay_rate=0.990000
+RMSE=0.047900,RMSE(real)=16.046428
+
+No.1651004134 Model, Training on 2022-04-26 16:15:34
+batch=8,x=32,t=4,steps=10000
+lr=0.001800,decay_steps=50,decay_rate=0.990000
+RMSE=0.033289,RMSE(real)=11.151821
+
+No.1651074185 Model, Training on 2022-04-27 11:43:05
+batch=8,x=32,t=4,steps=10000
+lr=0.001800,decay_steps=50,decay_rate=0.990000
+RMSE=0.044201,RMSE(real)=14.807285
+
