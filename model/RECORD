@@ -18,3 +18,8 @@ batch=8,x=32,t=4,steps=10000
 lr=0.001800,decay_steps=50,decay_rate=0.990000
 RMSE=0.044201,RMSE(real)=14.807285
 
+No.1651160032 Model, Training on 2022-04-28 11:33:52
+batch=8,x=32,t=4,steps=10000
+lr=0.001800,decay_steps=50,decay_rate=0.990000
+RMSE=0.035396,RMSE(real)=11.857678
+

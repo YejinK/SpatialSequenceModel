@@ -13,7 +13,7 @@ class Evaluation:
         self.steps = size
 
     def eval_model(self, t, r):
-        checkpoint_file = tf.train.latest_checkpoint("model/{}/".format(self.folder))
+        checkpoint_file = tf.train.latest_checkpoint("/home/ykim/workspace/SpatialSequenceModel/model/{}/".format(self.folder))
         graph = tf.Graph()
         with graph.as_default():
             self.session = tf.compat.v1.Session()
@@ -79,5 +79,5 @@ class Evaluation:
 
 
 if __name__ == "__main__":
-    evaluation = Evaluation("1556178571", size=10000)
+    evaluation = Evaluation("1651158704", size=10000)
     evaluation.eval_model(t=4, r=1)

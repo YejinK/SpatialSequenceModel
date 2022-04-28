@@ -1,3 +1,4 @@
+from calendar import c
 import numpy as np
 import h5py
 
@@ -66,7 +67,7 @@ class DataHelper(object):
         self.outflow_mmn = MinMaxNormalization_01()
 
         # TODO: path change
-        self.raw_data = h5py.File('/home/ykim/workspace/SpatialSequenceModel/data/BJ13_M32x32_T30_InOut.h5')
+        self.raw_data = h5py.File('/home/ykim/workspace/SpatialSequenceModel/data/merged_BJ.h5')
         self.extra_data = h5py.File('/home/ykim/workspace/SpatialSequenceModel/data/BJ_Meteorology.h5')
 
         self.inflow_mmn.fit(self.raw_data['data'][:][0])
@@ -81,7 +82,8 @@ class DataHelper(object):
         series_data = []
 
         for _ in range(batch_size):
-            random_time = random.randint(t, 2000)
+            #random_time = random.randint(t, 2000)
+            random_time = random.randint(t, 21139)
 
             # inflow data
             in_arr = []
@@ -142,7 +144,8 @@ class DataHelper(object):
         series_data = []
 
         for _ in range(batch_size):
-            random_time = random.randint(2000, 4800)
+            #random_time = random.randint(2000, 4800)
+            random_time = random.randint(21140, 22482)
 
             # inflow data
             in_arr = []
@@ -260,15 +263,42 @@ def record_model(batch, x, t, lr, decay_steps, decay_rate, steps, rmse, real):
     f.writelines(result + '\n')
     f.writelines('\n')
 
+def merge_dataset():
+    path = "/home/ykim/workspace/SpatialSequenceModel/data/"
+    with h5py.File(path + 'merged_BJ.h5',mode='w') as h5fw:
+        row1 = 0
+        for h5name in ["BJ13_M32x32_T30_InOut.h5", "BJ14_M32x32_T30_InOut.h5", "BJ15_M32x32_T30_InOut.h5", "BJ16_M32x32_T30_InOut.h5"]:
+            h5fr = h5py.File(path+h5name,'r') 
+            dset1 = list(h5fr.keys())[0]
+            arr_data = h5fr[dset1][:]
+            a = arr_data.shape[0]
+            b = arr_data.shape[1]
+            c = arr_data.shape[2]
+            d = arr_data.shape[3]
+            if row1 == 0: 
+                h5fw.create_dataset('data', dtype="f",  shape=(a,b,c,d), maxshape=(None, None, None, None) )
+            if row1+a <= len(h5fw['data']) :
+                h5fw['data'][row1:row1+a,:] = arr_data[:]
+            else :
+                h5fw['data'].resize( (row1+a, b, c, d) )
+                h5fw['data'][row1:row1+a,:] = arr_data[:]
+            row1 += a
 
 if __name__ == "__main__":
     # print(generate_data(8, 5))
     # generate_map_data(2, 4)
+    
+    #merge_dataset()
+    #exit()
+
     helper = DataHelper()
     inflow, outflow, series, extra, label = helper.eval_data_all(4, 3)
+    
     # print(data)
     # print(label)
+    
     print(series.shape)
+    
     # print(helper.reverse(label))
     # extra_data = h5py.File('BJ_Meteorology.h5')
     # print(extra_data['weather'])
