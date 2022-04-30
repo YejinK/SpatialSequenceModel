@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import time
 
-from model_2 import Model
+from workspace.SpatialSequenceModel.ccn_model import Model
 from data_helper import *
 
 

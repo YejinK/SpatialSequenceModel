@@ -136,7 +136,7 @@ class DataHelper(object):
                np.array(extra), \
                np.array(series_data)
 
-    def eval_data(self, batch_size, t, r):
+    def eval_data(self, batch_size, t, r, i):
         in_data = []
         out_data = []
         label = []
@@ -145,7 +145,8 @@ class DataHelper(object):
 
         for _ in range(batch_size):
             #random_time = random.randint(2000, 4800)
-            random_time = random.randint(21140, 22482)
+            #random_time = random.randint(21140, 22482)
+            random_time = i
 
             # inflow data
             in_arr = []

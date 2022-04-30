@@ -39,8 +39,10 @@ class Evaluation:
         loss_list = []
         target = []
 
-        for i in range(1, steps + 1):
-            inflow, outflow, series, extra, target = helper.eval_data(batch, t, r)
+        s, e = 21140, 22482
+        #for i in range(1, steps + 1):
+        for i in range(21140, 22483):
+            inflow, outflow, series, extra, target = helper.eval_data(batch, t, r, i)
             loss, prediction = self.session.run([self.loss, self.prediction], feed_dict={self.input_inflow: inflow,
                                                                                          self.input_outflow: outflow,
                                                                                          self.target_y: target,
